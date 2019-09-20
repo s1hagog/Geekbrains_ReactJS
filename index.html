@@ -18,7 +18,9 @@
             }
         }
 
-        loop(5, () => {console.log('Hello World')});
+
+        //Надо раскомментить для вывода
+        //loop(5, () => {console.log('Hello World')});
 
 
         //Ex 2
@@ -33,7 +35,9 @@
             return square;
         }
 
-        console.log(calculateArea(2));
+
+        //Надо раскомментить для вывода
+        //console.log(calculateArea(2));
 
         //Ex 3 
 
@@ -126,7 +130,35 @@
         mgr3.addDeveloper(dev3);
 
 
+        //ex 4
 
+
+        const promiseArray = [];
+        const url = 'https://jsonplaceholder.typicode.com/users/'
+
+        
+        //Тут есть некий мудреж с индексом i. все для того чтобы не было ссылки users/0
+        for(let i = 1; i <= 10; i++){
+            promiseArray[i-1] = new Promise((res,rej) => {
+                fetch(url + i)
+                    .then(response => {
+                        res(response.json());
+                    })
+                    .catch(error => {
+                        rej(`Error: ${error}`);
+                    })
+            })
+        }
+
+        Promise.all(promiseArray)
+            .then(result => {
+
+                //Надо раскомментить для вывода
+                //console.log(JSON.stringify(result));
+            })
+            .catch(error => {
+                console.log(error);
+        });
 
 
     </script>
