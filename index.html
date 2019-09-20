@@ -35,7 +35,91 @@
 
         console.log(calculateArea(2));
 
-        
+        //Ex 3 
+
+        class Human{
+            constructor(){
+
+                // Я не уверен каким образом лучше создать пустые переменные, чтобы отобразить структуру класса
+                // Второй мой вариант был бы --> this.name = ''
+                
+                this.name = undefined;
+                this.age = undefined;
+                this.dateOfBirth = undefined;
+            }
+
+            displayInfo(){
+                return `Name: ${this.name} \n Age: ${this.age} \n DOB: ${this.dateOfBirth}`;
+            }
+        }
+
+        class Employee extends Human{
+            constructor(){
+                super();
+                this.salary = undefined;
+                this.department = undefined;
+                super.name = this.name;
+                super.age = this.age;
+                super.dateOfBirth = this.dateOfBirth;
+            }
+
+            displayInfo(){
+                return super.displayInfo + `Salary: ${this.salary} \n Department: ${this.department}`;
+            }
+        }
+
+        class Manager extends Employee{
+            constructor(name, age, dateOfBirth, salary, department){
+                super();
+                super.name = name;
+                super.age = age;
+                super.dateOfBirth = dateOfBirth;
+                super.salary = salary;
+                super.department = department;
+                this.developers = [];
+            }
+
+            addDeveloper(developer){
+                this.developers.push(developer);
+            }
+            removeDeveloper(developer){
+                this.developers.splice(
+                    this.developers.findIndex(el => el == developer), 1
+                )
+            }
+        }
+
+        class Developer extends Employee{
+            constructor(name, age, dateOfBirth, salary, department){
+                super();
+                super.name = name;
+                super.age = age;
+                super.dateOfBirth = dateOfBirth;
+                super.salary = salary;
+                super.department = department;
+                this.manager = {};
+            }
+
+            setManager(manager){
+                this.manager = manager;
+            }
+        }
+
+        let dev1 = new Developer('Bob', 25, 'dd/mm/yyyy', '$1000', 'Front-end');
+        let dev2 = new Developer('Chris', 27, 'dd/mm/yyyy', '$1500', 'Back-end');
+        let dev3 = new Developer('Arseniy', 18, 'dd/mm/yyyy', '$12000', 'Full-stack');
+
+        let mgr1 = new Manager('Liza', 30, 'dd/mm/yyyy', '$500', 'Front-end');
+        let mgr2 = new Manager('Alex', 32, 'dd/mm/yyyy', '$700', 'Back-end');
+        let mgr3 = new Manager('Fedor', 40, 'dd/mm/yyyy', '$5000', 'Full-stack');
+
+        dev1.setManager(mgr1);
+        dev2.setManager(mgr2);
+        dev3.setManager(mgr3);
+
+        mgr1.addDeveloper(dev1);
+        mgr2.addDeveloper(dev2);
+        mgr3.addDeveloper(dev3);
 
     </script>
 </body>
