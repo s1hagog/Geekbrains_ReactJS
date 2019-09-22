@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Ex 1 
+
+        const loop = (times = 0, callback = null) => {
+            if (callback != null) {
+                for (let i = 0; i < times; i++){
+                    callback();
+                }
+            }
+        }
+
+
+        //Надо раскомментить для вывода
+        //loop(5, () => {console.log('Hello World')});
+
+
+        //Ex 2
+
+        const calculateArea = (side) => {
+            const square = {
+                area: side*side,
+                figure: 'square',
+                input: `input was ${side}`
+            }
+
+            return square;
+        }
+
+
+        //Надо раскомментить для вывода
+        //console.log(calculateArea(2));
+
+        //Ex 3 
+
+        class Human{
+            constructor(){
+
+                // Я не уверен каким образом лучше создать пустые переменные, чтобы отобразить структуру класса
+                // Второй мой вариант был бы --> this.name = ''
+                
+                this.name = undefined;
+                this.age = undefined;
+                this.dateOfBirth = undefined;
+            }
+
+            displayInfo(){
+                return `Name: ${this.name} \n Age: ${this.age} \n DOB: ${this.dateOfBirth} \n `;
+            }
+        }
+
+        class Employee extends Human{
+            constructor(){
+                super();
+                this.salary = undefined;
+                this.department = undefined;
+                super.name = this.name;
+                super.age = this.age;
+                super.dateOfBirth = this.dateOfBirth;
+            }
+
+            displayInfo(){
+                return super.displayInfo() + `Salary: ${this.salary} \n Department: ${this.department}`;
+            }
+        }
+
+        class Manager extends Employee{
+            constructor(name, age, dateOfBirth, salary, department){
+                super();
+                super.name = name;
+                super.age = age;
+                super.dateOfBirth = dateOfBirth;
+                super.salary = salary;
+                super.department = department;
+                this.developers = [];
+            }
+
+            addDeveloper(developer){
+                this.developers.push(developer);
+            }
+            removeDeveloper(developer){
+                this.developers.splice(
+                    this.developers.findIndex(el => el == developer), 1
+                )
+            }
+        }
+
+        class Developer extends Employee{
+            constructor(name, age, dateOfBirth, salary, department){
+                super();
+                super.name = name;
+                super.age = age;
+                super.dateOfBirth = dateOfBirth;
+                super.salary = salary;
+                super.department = department;
+                this.manager = {};
+            }
+
+            setManager(manager){
+                this.manager = manager;
+            }
+
+            displayInfo(){
+                return super.displayInfo();
+            }
+        }
+
+        let dev1 = new Developer('Bob', 25, 'dd/mm/yyyy', '$1000', 'Front-end');
+        let dev2 = new Developer('Chris', 27, 'dd/mm/yyyy', '$1500', 'Back-end');
+        let dev3 = new Developer('Arseniy', 18, 'dd/mm/yyyy', '$12000', 'Full-stack');
+
+        let mgr1 = new Manager('Liza', 30, 'dd/mm/yyyy', '$500', 'Front-end');
+        let mgr2 = new Manager('Alex', 32, 'dd/mm/yyyy', '$700', 'Back-end');
+        let mgr3 = new Manager('Fedor', 40, 'dd/mm/yyyy', '$5000', 'Full-stack');
+
+        dev1.setManager(mgr1);
+        dev2.setManager(mgr2);
+        dev3.setManager(mgr3);
+
+        mgr1.addDeveloper(dev1);
+        mgr2.addDeveloper(dev2);
+        mgr3.addDeveloper(dev3);
+
+
+        //ex 4
+
+
+        const promiseArray = [];
+        const url = 'https://jsonplaceholder.typicode.com/users/'
+
+        
+        //Тут есть некий мудреж с индексом i. все для того чтобы не было ссылки users/0
+        for(let i = 1; i <= 10; i++){
+            promiseArray[i-1] = new Promise((res,rej) => {
+                fetch(url + i)
+                    .then(response => {
+                        res(response.json());
+                    })
+                    .catch(error => {
+                        rej(`Error: ${error}`);
+                    })
+            })
+        }
+
+        Promise.all(promiseArray)
+            .then(result => {
+
+                //Надо раскомментить для вывода
+                //console.log(JSON.stringify(result));
+            })
+            .catch(error => {
+                console.log(error);
+        });
+
+
+    </script>
+</body>
+</html>
