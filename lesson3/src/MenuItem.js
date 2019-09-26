@@ -10,8 +10,8 @@ class MenuItem extends React.Component{
         // }else{
         //     title = "nothing";
         // }
-        return <li>
-            <a href = {this.props.href}>{this.props.title}</a>
+        return <li className="nav-item">
+            <a className="nav-link" href = {this.props.href}>{this.props.title}</a>
         </li>
     }
 }

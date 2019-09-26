@@ -1,0 +1,10 @@
+body{
+    background: url('../res/react-js-logo.png');
+}
+
+.mainHeader{
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 15%;
+}
