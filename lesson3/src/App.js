@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Menu from './Menu';
+import Login from './Login';
 
 class App extends React.Component {
     render () {
@@ -13,6 +14,8 @@ class App extends React.Component {
         ];
 
         return  <div>
+            <h1>Первое React приложение</h1>
+            <Login />
             <Menu titleMenu="Main website's menu" items={menuItems}/>
         </div>
     }
