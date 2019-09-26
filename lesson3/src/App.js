@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Menu from './Menu';
-import Login from './Login';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/random.css';
 
 class App extends React.Component {
     render () {
@@ -14,9 +16,10 @@ class App extends React.Component {
         ];
 
         return  <div>
-            <h1>Первое React приложение</h1>
-            <Login />
-            <Menu titleMenu="Main website's menu" items={menuItems}/>
+            <header>
+                <Menu titleMenu="Main website's menu" items={menuItems}/>
+            </header>
+            <h1 className="display-1 mainHeader">My First React App</h1>
         </div>
     }
 }
