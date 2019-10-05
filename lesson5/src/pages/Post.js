@@ -14,7 +14,7 @@ export default class Post extends Component {
     render() {
         return (
             <div>
-                {this.state.post && <PostCard {...this.state.post} noLink={noLink}/>}
+                {this.state.post && <PostCard {...this.state.post} noLink={this.state.noLink}/>}
             </div>
         )
     }

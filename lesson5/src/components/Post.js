@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 
 export default class Post extends Component {
     render() {
-        const {id, title, body} = this.props;
+        const {id, title, body, noLink} = this.props;
 
         return (
             <div className="card border-secondary mb-3">

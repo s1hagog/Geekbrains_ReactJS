@@ -10,7 +10,7 @@ export default class PostsList extends Component {
         super(props);
         this.state = {
             posts: [],
-            noLink: true
+            noLink: false
         }
     }
 
@@ -20,7 +20,7 @@ export default class PostsList extends Component {
         }
 
         const posts = this.state.posts.map(post => {
-            return <Post key={post.id} {...post} noLink={noLink}/>
+            return <Post key={post.id} {...post} noLink={this.state.noLink}/>
         })
 
 
