@@ -12,18 +12,22 @@ export default class Layout extends React.Component{
 
     }
 
-    isActive(href) {
+    isActiveMain(href) { 
         return window.location.pathname == href;
+    }
+
+    isActive(href) {
+        return window.location.pathname.includes(href);
     }
 
     render(){
         return(
             <>
                 <Menu brand={this.brand}>
-                    <MenuItem href="/" active={this.isActive('/')}>Main</MenuItem>
-                    <MenuItem href="/users" active={this.isActive('/users')}>Users</MenuItem>
-                    <MenuItem href="/posts" active={this.isActive('/posts')}>Posts</MenuItem>
-                    <MenuItem href="/comments" active={this.isActive('/comments')}>Comments</MenuItem>
+                    <MenuItem href="/" active={this.isActiveMain('/')}>Main</MenuItem>
+                    <MenuItem href="/users" active={this.isActive('users')}>Users</MenuItem>
+                    <MenuItem href="/posts" active={this.isActive('posts')}>Posts</MenuItem>
+                    <MenuItem href="/comments" active={this.isActive('comments')}>Comments</MenuItem>
                 </Menu>
                 <div className="container">
                     <div className="row">
