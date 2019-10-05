@@ -13,7 +13,7 @@ export default class Comment extends Component {
     render() {
         return (
             <div>
-                <CommentCard {...this.state.comment} />
+                <CommentCard {...this.state.comment} noLink={true} />
             </div>
         )
     }

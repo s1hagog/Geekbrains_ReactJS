@@ -12,7 +12,7 @@ export default class CommentsList extends Component {
     }
     render() {
         const comments = this.state.comments.map(comment => {
-            return <Comment key={comment.id} {...comment} />
+            return <Comment key={comment.id} {...comment} noLink={false} />
         })
 
         return (
