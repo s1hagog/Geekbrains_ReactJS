@@ -13,7 +13,7 @@ export default class User extends Component {
     render() {
         return (
             <div>
-                {this.state.user && <UserCard {...this.state.user}/>}
+                {this.state.user && <UserCard {...this.state.user} noLink={true}/>}
             </div>
         )
     }

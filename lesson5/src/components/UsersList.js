@@ -15,7 +15,7 @@ export default class UsersList extends Component {
         }
 
         const users = this.state.users.map(user => {
-            return <User key={user.id} {...user} />
+            return <User key={user.id} {...user} noLink={false}/>
         })
 
         return (
