@@ -9,7 +9,8 @@ export default class PostsList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            noLink: true
         }
     }
 
@@ -19,7 +20,7 @@ export default class PostsList extends Component {
         }
 
         const posts = this.state.posts.map(post => {
-            return <Post key={post.id} {...post}/>
+            return <Post key={post.id} {...post} noLink={noLink}/>
         })
 
 

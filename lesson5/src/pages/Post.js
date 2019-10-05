@@ -7,13 +7,14 @@ export default class Post extends Component {
     constructor(props){
         super(props);
         this.state = {
-            post: null
+            post: null,
+            noLink: true
         }
     }
     render() {
         return (
             <div>
-                {this.state.post && <PostCard {...this.state.post} />}
+                {this.state.post && <PostCard {...this.state.post} noLink={noLink}/>}
             </div>
         )
     }
