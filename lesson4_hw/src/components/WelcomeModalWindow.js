@@ -22,7 +22,7 @@ export default class WelcomeModalWindow extends React.Component {
     render() {
         if(this.state.modal){
             return (
-                <div className="modal fade" style={{display: 'block'}} tabIndex="-1" role="dialog">
+                <div className={!this.state.modal ? 'modal fade' : 'modal'} style={{display: 'block'}} tabIndex="-1" role="dialog">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                         <div className="modal-header">
